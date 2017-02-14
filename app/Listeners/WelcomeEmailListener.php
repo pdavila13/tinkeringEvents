@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
+use App\Mail\WelcomeEmail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
 
 class WelcomeEmailListener
 {
@@ -26,6 +28,7 @@ class WelcomeEmailListener
      */
     public function handle(Registered $event)
     {
-//        dd('Listener NewRegisteredUserEvent');
+        //send email
+        Mail::to('pdavila@iesebre.com')->send(new WelcomeEmail());
     }
 }
