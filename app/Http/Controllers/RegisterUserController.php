@@ -9,6 +9,12 @@ class RegisterUserController extends Controller
 {
     public function register()
     {
-        event(new Registered());
+        $user = new \App\User();
+
+        $user->name = 'Pepito Palotes';
+        $user->email = 'sergiturbadenas@gmail.com';
+
+        event(new Registered($user));
+        dump("Done!");
     }
 }
