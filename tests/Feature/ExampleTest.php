@@ -32,8 +32,8 @@ class ExampleTest extends TestCase
     {
         Mail::fake();
         $user = new \App\User();
-        $user->name = 'Pepito Palotes';
-        $user->email = 'sergiturbadenas@gmail.com';
+        $user->name = 'Panqueque Gato';
+        $user->email = 'panqueque@gmail.com';
         event(new Registered($user));
         Mail::assertSent(WelcomeEmailMarkdown::class,function($mail) use ($user)  {
             return $mail->user->name ===  $user->name && $mail->user->email ===  $user->email;
@@ -48,7 +48,7 @@ class ExampleTest extends TestCase
         Event::fake();
         $this->get('/registerUser');
         Event::assertDispatched(Registered::class,function($event)  {
-            return $event->user->name === 'Pepito Palotes';
+            return $event->user->name === 'Panqueque Gato';
         });
     }
 
